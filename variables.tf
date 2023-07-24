@@ -88,6 +88,67 @@ variable "spoke20_local_as_number" {
     type = string
 }
 
+###################
+### Spope 10 VM ###
+###################
+
+
+variable "spoke10_vm_instance_name" {
+    type        = string
+    description = "EC2 instance name"
+}
+
+variable "spoke10_vm_instance_type" {
+    type        = string
+    description = "EC2 instance type"
+}
+
+variable "spoke10_vm_associate_public_ip_address" {
+    type        = bool
+    description = "Associate a public IP address to the EC2 instance"
+}
+
+variable "spoke10_vm_root_volume_size" {
+    type        = number
+    description = "Root Volume size of the EC2 Instance"
+}
+
+variable "spoke10_vm_root_volume_type" {
+    type        = string
+    description = "Root volume type of the EC2 Instance"
+}
+
+
+variable "spoke20_vm_instance_name" {
+    type        = string
+    description = "EC2 instance name"
+}
+
+variable "spoke20_vm_instance_type" {
+    type        = string
+    description = "EC2 instance type"
+}
+
+variable "spoke20_vm_associate_public_ip_address" {
+    type        = bool
+    description = "Associate a public IP address to the EC2 instance"
+}
+
+variable "spoke20_vm_root_volume_size" {
+    type        = number
+    description = "Root Volume size of the EC2 Instance"
+}
+
+variable "spoke20_vm_root_volume_type" {
+    type        = string
+    description = "Root volume type of the EC2 Instance"
+}
+
+
+
+
+
+
 
 variable "createdby" {
     type = string
@@ -108,3 +169,4 @@ variable "owner" {
 variable "repository" {
     type = string
 }
+

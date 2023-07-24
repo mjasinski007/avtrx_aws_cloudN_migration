@@ -1,6 +1,7 @@
 module "transit150" {
     source  = "terraform-aviatrix-modules/mc-transit/aviatrix"
-    version = "2.4.1"
+    #version = "2.4.1" # v.7.x
+    version = "v2.2.1" # v.6.8
 
     cloud           = var.cloud_type
     region          = var.aws_us_region
@@ -10,11 +11,16 @@ module "transit150" {
     gw_name         = var.transit150_gw_name
     instance_size   = var.transit150_instance_type
     local_as_number = var.transit150_local_as_number
+    insane_mode     = true
+    az1             = "a"
+    az2             = "c"
+    ha_gw           = true
 }
 
 module "spoke_10" {
     source  = "terraform-aviatrix-modules/mc-spoke/aviatrix"
-    version = "1.5.0"
+    #version = "1.5.0" # v.7.x
+    version = "v1.3.2" # v.6.8
 
     cloud           = var.cloud_type
     region          = var.aws_us_region
@@ -30,9 +36,10 @@ module "spoke_10" {
     depends_on      = [module.transit150]
 }
 
-/* module "spoke_20" {
+module "spoke_20" {
     source  = "terraform-aviatrix-modules/mc-spoke/aviatrix"
-    version = "1.5.0"
+    #version = "1.5.0"  # v.7.x
+    version = "v1.3.2" # v.6.8
 
     cloud           = var.cloud_type
     region          = var.aws_us_region
@@ -46,7 +53,7 @@ module "spoke_10" {
     enable_bgp      = true
 
     depends_on      = [module.transit150]
-} */
+}
 
 
 resource "aws_vpn_gateway" "transit_vpn_gw" {
